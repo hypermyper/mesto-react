@@ -1,0 +1,16 @@
+.profile-info__description {
+  margin: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 10px;
+}
+
+@media (max-width: 320px) {
+  .profile-info__description {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 14px;
+  }
+}

@@ -1,18 +1,18 @@
 import React from 'react';
 import closeIcon from '../images/close-icon.svg';
 
-function PopupWithForm(props)
+function ImagePopup(props)
   {
     const popupOpened = props.isOpen ? ' overlay_opened' : '';
     return(
       <section className={`overlay overlay_${props.name}${popupOpened}`}>
-        <form className={`form form_${props.name}`} name={props.name}>
+        <figure className="overlay-figure">
           <button type="button" className="form__close-icon" onClick={props.onClose}><img src={closeIcon} alt="Закрыть форму" /></button>
-          <h5 className="form__title">{props.title}</h5>
-            {props.children}
-        </form>
+          <img src={`${props.card.link}`} alt="" className="overlay-figure__image" />
+          <figcaption className="overlay-figure__caption">{props.card.name}</figcaption>
+        </figure>
       </section>
     )
 }
 
-export default PopupWithForm;
+export default ImagePopup;

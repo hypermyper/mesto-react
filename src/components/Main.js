@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import editButton from '../images/edit_button.svg';
 import api from '../utils/Api';
+import Card from './Card';
 
 function Main(props)
   {
@@ -8,8 +9,6 @@ function Main(props)
     const [userName, setUserName] = React.useState();
     const [userDescription, setUserDescription] = React.useState();
     const [userAvatar, setUserAvatar] = React.useState();
-
-    const [cards, setCards] = React.useState([]);
 
     React.useEffect(() => {
       api.getUserInfo().then((res) => {
@@ -21,13 +20,14 @@ function Main(props)
   }, [userName, userAvatar, userDescription]);
 
 
-    React.useEffect(() => {
-      api.getCards().then(res => {
-          setCards(res);
-        }
-      )
-    }, []);
+  const [cards, setCards] = React.useState([]);
 
+  React.useEffect(() => {
+    api.getCards().then(res => {
+        setCards(res);
+      }
+    )
+  }, []);
 
   return (
       <main>
@@ -49,18 +49,7 @@ function Main(props)
         <section className="elements">
           {
             cards.map(card => (
-              <article class="element" key={card._id}>
-                <button type="button" className="element__trash"></button>
-                <img src={card.link} className="element__photo" alt={card.name} />
-                <div className="element__body">
-                  <h3 className="element__title">{card.name}</h3>
-                  <div className="element__like-group">
-                    <button type="button" className="element__like-button"></button>
-                    <p className="element__like-quantity">{card.likes.length}</p>
-                  </div>
-                </div>
-
-              </article>
+              <Card card={card} onCardClick={props.onCardClick}/>
             ))
           }
         </section>

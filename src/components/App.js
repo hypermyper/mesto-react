@@ -6,6 +6,7 @@ import Footer from './Footer';
 import EditAvatarPopup from './EditAvatarPopup';
 import EditProfilePopup from './EditProfilePopup';
 import AddPlacePopupOpen from './AddPlacePopup';
+import ImagePopup from './ImagePopup';
 //import api from '../utils/Api';
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
+  const [isImagePopupOpen, setImagePopupOpen] = React.useState(false);
+
+  const [selectedCard, setSelectedCard] = React.useState({});
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -30,17 +34,24 @@ function App() {
     setEditAvatarPopupOpen(false);
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
+    setImagePopupOpen(false);
+  }
+
+  function handleCardClick(card) {
+    setSelectedCard(card);
+    setImagePopupOpen(true);
   }
 
   return (
     <>
         <div className="page">
           <Header />
-          <Main onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} />
+          <Main onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick} />
           <Footer />
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
           <AddPlacePopupOpen isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
+          <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} card={selectedCard} />
         </div>
 
         <section className="overlay overlay_delete-card">
@@ -50,14 +61,6 @@ function App() {
             <button type="submit" className="form__submit-button">Да</button>
           </form>
         </section>
-        <section className="overlay overlay_image-popup">
-          <figure className="overlay-figure">
-            <button type="button" className="form__close-icon"><img src="<%=require('./images/close-icon.svg')%>" alt="Закрыть форму" /></button>
-            <img src="https://images.unsplash.com/photo-1561398036-dc6755f9f65d?auto=format&fit=crop&w=600&q=50" alt="" className="overlay-figure__image" />
-            <figcaption className="overlay-figure__caption" />
-          </figure>
-        </section>
-        <template className="template" />
     </>
   );
 }

@@ -11,7 +11,7 @@ function EditAvatarPopup(props)
         isOpen={props.isOpen}
         onClose={props.onClose}>
         <>
-          <input id="input-avatar" type="url" name="input-avatar" className="form__input form__input_avatar" value="" autocomplete="off" required />
+          <input id="input-avatar" type="url" name="input-avatar" className="form__input form__input_avatar" autoComplete="off" required />
           <span id="input-avatar-error" className="form__avatar-error"></span>
           <button type="submit" className="form__submit-button">Сохранить</button>
         </>

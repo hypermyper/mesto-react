@@ -53,14 +53,6 @@ function App() {
           <AddPlacePopupOpen isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
           <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} card={selectedCard} />
         </div>
-
-        <section className="overlay overlay_delete-card">
-          <form className="form form_delete-card" name="delete-card">
-            <button type="button" className="form__close-icon"><img src="<%=require('./images/close-icon.svg')%>" alt="Закрыть форму" /></button>
-            <h5 className="form__title">Вы уверены?</h5>
-            <button type="submit" className="form__submit-button">Да</button>
-          </form>
-        </section>
     </>
   );
 }

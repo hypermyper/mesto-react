@@ -11,9 +11,9 @@ function EditProfilePopup(props)
         isOpen={props.isOpen}
         onClose={props.onClose}>
         <>
-          <input id="input-name" type="text" name="input-name" className="form__input form__input_name" value="" autocomplete="off" placeholder="Имя" minLength="2" maxLength="40" required />
+          <input id="input-name" type="text" name="input-name" className="form__input form__input_name" autoComplete="off" placeholder="Имя" minLength="2" maxLength="40" required />
           <span id="input-name-error" className="form__input-error"></span>
-          <input id="input-description" type="text" name="input-description" className="form__input form__input_description" value="" autocomplete="off" placeholder="Профессия" minlength="2" maxlength="200" required />
+          <input id="input-description" type="text" name="input-description" className="form__input form__input_description" autoComplete="off" placeholder="Профессия" minLength="2" maxLength="200" required />
           <span id="input-description-error" className="form__input-error"></span>
           <button type="submit" className="form__submit-button">Сохранить</button>
         </>

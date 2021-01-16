@@ -9,7 +9,7 @@ function Card(props) {
   return (
     <>
     {
-        <article class="element" key={props.card._id} onClick={handleCardClick}>
+        <article className="element" onClick={handleCardClick}>
           <button type="button" className="element__trash"></button>
           <img src={props.card.link} className="element__photo" alt={props.card.name} />
           <div className="element__body">
@@ -26,4 +26,3 @@ function Card(props) {
 }
 
 export default Card;
-

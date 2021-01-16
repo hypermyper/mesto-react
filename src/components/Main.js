@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import editButton from '../images/edit_button.svg';
-import api from '../utils/Api';
+import api from '../utils/api';
 import Card from './Card';
 
 function Main(props)
@@ -16,8 +16,8 @@ function Main(props)
         setUserDescription(res.about);
         setUserAvatar(res.avatar);
       }
-    )
-  }, [userName, userAvatar, userDescription]);
+    ).catch(err => console.log(err))
+  }, []);
 
 
   const [cards, setCards] = React.useState([]);
@@ -33,7 +33,7 @@ function Main(props)
       <main>
         <section className="profile">
           <div className="profile__avatar" onClick={props.onEditAvatar}>
-            <img src={userAvatar} alt="" title className="profile__avatar-image" />
+            <img src={userAvatar} alt={userName} className="profile__avatar-image" />
           </div>
           <div className="profile-info">
             <div className="profile-info__title-wrap">
@@ -49,7 +49,7 @@ function Main(props)
         <section className="elements">
           {
             cards.map(card => (
-              <Card card={card} onCardClick={props.onCardClick}/>
+              <Card card={card} onCardClick={props.onCardClick} key={card._id}/>
             ))
           }
         </section>

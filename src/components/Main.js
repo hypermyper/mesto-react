@@ -26,7 +26,7 @@ function Main(props)
     api.getCards().then(res => {
         setCards(res);
       }
-    )
+    ).catch(err => console.log(err))
   }, []);
 
   return (

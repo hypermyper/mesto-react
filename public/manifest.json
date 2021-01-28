@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Mesto — Russia",
+  "name": "интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки, редактировать профиль и аватар",
   "icons": [
     {
       "src": "favicon.ico",

@@ -87,6 +87,14 @@ class Api {
     });
   }
 
+  changeLikeCardStatus(card, isLiked) {
+    if (isLiked) {
+      return this.deleteLikeCard(card);
+    } else {
+      return this.addLikeCard(card);
+    }
+  }
+
   getUserInfo() {
     return fetch(`${this._url}users/me`, {
       headers: this._headers

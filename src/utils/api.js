@@ -4,19 +4,18 @@ class Api {
     this._headers = options.headers;
   }
 
+  _getResponseData(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
+
   getCards() {
     return fetch(`${this._url}cards`, {
       headers: this._headers
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(res => this._getResponseData(res))
   }
 
   addNewCard(data) {
@@ -28,15 +27,7 @@ class Api {
         link: data.link
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(res => this._getResponseData(res))
   }
 
   deleteCard(card) {
@@ -44,15 +35,7 @@ class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(res => this._getResponseData(res))
   }
 
   addLikeCard(card) {
@@ -60,15 +43,7 @@ class Api {
       method: 'PUT',
       headers: this._headers
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(res => this._getResponseData(res))
   }
 
   deleteLikeCard(card) {
@@ -76,15 +51,7 @@ class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(res => this._getResponseData(res))
   }
 
   changeLikeCardStatus(card, isLiked) {
@@ -99,15 +66,7 @@ class Api {
     return fetch(`${this._url}users/me`, {
       headers: this._headers
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(res => this._getResponseData(res))
   }
 
   updateUserInfo(data) {
@@ -119,15 +78,7 @@ class Api {
         about: data.about
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(res => this._getResponseData(res))
   }
 
   updateAvatar(avatar) {
@@ -138,15 +89,7 @@ class Api {
         avatar: avatar
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(res => this._getResponseData(res))
   }
 
 }
